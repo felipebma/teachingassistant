@@ -23,3 +23,4 @@ Scenario: Adicionando autoavaliação incorretamente
 	And a pop-up appears showing a Error message alerting that I didn’t fill all the grades
 	And I am redirected to the “Auto-Avaliação”page
 	And I see no grades on self assessment section for all of the learning goals
+	And a pop-up appears showing a message alerting that the self assessment was not registered 			correctly
