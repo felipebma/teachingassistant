@@ -41,4 +41,17 @@ Scenario: Analisando discrepâncias na auto-avaliação
 	Then I’m at the “Auto-Avaliações Discrepancies” page
 	And I see that there was no discrepancies
 	And I see “0%” on discrepancies percentage
-	And I see no “Student”s on discrepant students list
+	And I see no “Student”s on discrepant students list	
+	
+Scenario: Analisando discrepâncias na auto-avaliação
+	Given I am at the “Avaliação” page
+	And I am logged as “Professor”
+	And the “Student”s “João Paulo”, “Luiz Henrique” and “Pedro Lucas” have achieved grades “MPA” 			for all of the 5 goals.
+	And the “Student” “João Paulo” evaluated himself by giving him “MA” for all of his 5 goals
+	And the “Student” “Luiz Henrique” evaluated himself by giving him “MANA” for all of his 5 goals
+	And the “Student” “Pedro Lucas” evaluated himself by giving him “MPA” for all of his 5 goals
+	When I ask the system for the list of discrepancies
+	Then I’m at the “Auto-Avaliações Discrepancies” page
+	And I see that there was “1” discrepancies
+	And I see “33,33%” on discrepancies percentage
+	And I see “João Paulo” on discrepant students list
