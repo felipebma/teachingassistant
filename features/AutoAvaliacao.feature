@@ -46,7 +46,7 @@ Scenario: Analisando discrepâncias na auto-avaliação
 Scenario: Analisando discrepâncias na auto-avaliação
 	Given I am at the “Avaliação” page
 	And I am logged as “Professor”
-	And the “Student”s “João Paulo”, “Luiz Henrique” and “Pedro Lucas” have achieved grades “MPA” 			for all of the 5 goals.
+	And the “Student”s “João Paulo”, “Luiz Henrique” and “Pedro Lucas” have achieved grades “MPA” for all of their 5 goals.
 	And the “Student” “João Paulo” evaluated himself by giving him “MA” for all of his 5 goals
 	And the “Student” “Luiz Henrique” evaluated himself by giving him “MANA” for all of his 5 goals
 	And the “Student” “Pedro Lucas” evaluated himself by giving him “MPA” for all of his 5 goals
@@ -55,3 +55,4 @@ Scenario: Analisando discrepâncias na auto-avaliação
 	And I see that there was “1” discrepancies
 	And I see “33,33%” on discrepancies percentage
 	And I see “João Paulo” on discrepant students list
+	And I a message appears asking if I want to send a message to the discrepant students
