@@ -56,3 +56,16 @@ Scenario: Analisando discrepâncias na auto-avaliação
 	And I see “33,33%” on discrepancies percentage
 	And I see “João Paulo” on discrepant students list
 	And I a message appears asking if I want to send a message to the discrepant students
+	
+	
+Scenario: Visualização do percentual de discrepancias
+	Given I’m at the “Auto-Avaliações Discrepancies” page
+	And I am logged as “Professor”
+	And the “Student”s “João Paulo”, “Luiz Henrique” and “Pedro Lucas” have achieved grades “MPA” for all of their 5 goals.
+	And the “Student” “João Paulo” evaluated himself by giving him “MA” for all of his 5 goals
+	And the “Student” “Luiz Henrique” evaluated himself by giving him “MANA” for all of his 5 goals
+	And the “Student” “Pedro Lucas” evaluated himself by giving him “MPA” for all of his 5 goals
+	And I see “33,33%” on discrepancies percentage
+	And I see “João Paulo” on discrepant students list	
+	When I check the discrepancies percentage
+	Then A pop-up appears showing the number of discrepant students and the number of students enrolled in the course
