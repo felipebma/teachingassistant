@@ -15,18 +15,25 @@ export class AppComponent {
    aluno: Aluno = new Aluno();
    alunos: Aluno[] = [];
    cpfduplicado: boolean = false;
+   githubduplicado: boolean = false;
 
    criarAluno(a: Aluno): void {
      if (this.alunoService.criar(a)) {
        this.alunos.push(a);
        this.aluno = new Aluno();
      } else {
-       this.cpfduplicado = true;
+       if(this.alunoService.checarCPF(a)){
+        this.cpfduplicado = true;
+       }else{
+         this.githubduplicado = true;
+       }
+        
      }
    }
 
    onMove(): void {
       this.cpfduplicado = false;
+      this.githubduplicado = false;
    }
 
 }

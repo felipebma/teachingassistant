@@ -19,7 +19,6 @@ app.use(allowCrossDomain);
 app.use(bodyParser.json());
 
 app.get('/alunos', function (req, res) {
-  console.log('GET /alunos: ' + req)
   res.send(JSON.stringify(cadastro.getAlunos()));
 })
 
@@ -42,6 +41,19 @@ app.put('/aluno', function (req: express.Request, res: express.Response) {
     res.send({"failure": "O aluno não pode ser atualizado"});
   }
 })
+
+app.get('/checkCPF', function (req: express.Request, res: express.Response) {
+  var aluno: Aluno = <Aluno> req.body;
+  var exists: boolean;
+  exists = !cadastro.cpfNaoCadastrado(aluno.cpf);
+  if(exists){ 
+    res.send(aluno);
+  }else{
+    res.send(null);
+  }
+  
+})
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')

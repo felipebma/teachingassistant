@@ -15,6 +15,7 @@ export class AlunosComponent implements OnInit {
    aluno: Aluno = new Aluno();
    alunos: Aluno[];
    cpfduplicado: boolean = false;
+   githubduplicado: boolean = false;
 
    criarAluno(a: Aluno): void {
      this.alunoService.criar(a)
@@ -23,7 +24,13 @@ export class AlunosComponent implements OnInit {
               this.alunos.push(ab);
               this.aluno = new Aluno();
            } else {
-              this.cpfduplicado = true;
+              if(this.alunoService.checarCPF(a)!=null){
+               this.cpfduplicado = true;
+               this.githubduplicado = true;
+              }else{
+               this.githubduplicado = true;
+              }
+              
            }
         })
         .catch(erro => alert(erro));
@@ -31,6 +38,7 @@ export class AlunosComponent implements OnInit {
 
    onMove(): void {
       this.cpfduplicado = false;
+      this.githubduplicado = false;
    }
 
    ngOnInit(): void {

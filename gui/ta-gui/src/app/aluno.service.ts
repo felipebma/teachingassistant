@@ -30,6 +30,10 @@ export class AlunoService {
          .catch(this.tratarErro);
   }
 
+  checarCPF(aluno: Aluno): Promise<Aluno> {
+    return this.http.get(this.taURL+"/checkCPF",JSON.stringify(aluno)).toPromise().then(res => res.json() as Aluno).catch(this.tratarErro);
+  }
+
   getAlunos(): Promise<Aluno[]> {
     return this.http.get(this.taURL + "/alunos")
              .toPromise()
