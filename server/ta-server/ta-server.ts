@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 
 app.get('/alunos', function (req, res) {
   res.send(JSON.stringify(cadastro.getAlunos()));
+  console.log("get foi chamado");
 })
 
 app.post('/aluno', function (req: express.Request, res: express.Response) {
@@ -39,6 +40,15 @@ app.put('/aluno', function (req: express.Request, res: express.Response) {
     res.send({"success": "O aluno foi atualizado com sucesso"});
   } else {
     res.send({"failure": "O aluno não pode ser atualizado"});
+  }
+})
+
+app.delete('/aluno/:cpf', function (req: express.Request, res: express.Response) {
+  var aluno = cadastro.remover(req.params.cpf);
+  if (aluno) {
+    res.send({"success": "O aluno foi removido com sucesso"});
+  } else {
+    res.send({"failure": "O aluno não foi encontrado"});
   }
 })
 

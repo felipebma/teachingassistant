@@ -25,6 +25,13 @@
     cursor: pointer;
     cursor: hand;
   }
+
+  .delete {
+    background-color: red;
+  }
+  .delete:hover {
+    background-color: rgba(211, 70, 70, 0.877)
+  }
   button:hover {
     background-color: #cfd8dc;
   }

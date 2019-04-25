@@ -36,6 +36,11 @@ export class AlunosComponent implements OnInit {
         .catch(erro => alert(erro));
    }
 
+   removerAluno(a: Aluno): void {
+      this.alunos = this.alunos.filter(aluno => aluno !== a);
+      this.alunoService.remover(a);
+    }
+
    onMove(): void {
       this.cpfduplicado = false;
       this.githubduplicado = false;
